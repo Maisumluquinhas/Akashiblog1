@@ -1,1373 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <title>Blog Fã – Akashi Cruz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Página estilo blog dedicada ao rapper e cantor Akashi Cruz: biografia, discografia, Coffee Shop, Debi & Lóide, principais singles, agenda e links oficiais." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #050509;
-            --bg-alt: #0b0b12;
-            --accent: #ff2f6e;
-            --accent-soft: rgba(255, 47, 110, 0.1);
-            --accent-2: #5c7cff;
-            --text: #f7f7ff;
-            --text-muted: #a1a1b5;
-            --card: #11111a;
-            --border-soft: rgba(255,255,255,0.08);
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --shadow-soft: 0 18px 45px rgba(0,0,0,0.6);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #151529 0, #050509 40%);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .wrapper {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 1.2rem 3rem;
-        }
-
-        /* NAVBAR */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(12px);
-            background: linear-gradient(to bottom, rgba(5,5,15,0.96), rgba(5,5,15,0.78), transparent);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .nav {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .logo-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 999px;
-            background: radial-gradient(circle at 20% 20%, #ffde7b 0, #ff2f6e 40%, #5c7cff 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.6rem;
-            color: #050509;
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            font-size: 0.85rem;
-        }
-
-        .nav-links a {
-            padding: 0.35rem 0.7rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .nav-links a:hover {
-            border-color: rgba(255,255,255,0.08);
-            color: var(--text);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .nav-cta a {
-            font-size: 0.82rem;
-            padding: 0.35rem 0.9rem;
-            border-radius: 999px;
-            border: 1px solid var(--accent);
-            background: linear-gradient(135deg, var(--accent), #ff7a3c);
-            color: #050509;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .nav-cta a:hover {
-            filter: brightness(1.1);
-        }
-
-        /* HERO */
-
-        .hero {
-            padding: 3.5rem 0 2.5rem;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .hero-title-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.8rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.02);
-            color: var(--accent-2);
-            font-size: 0.8rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .hero-title-badge span.dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 999px;
-            background: var(--accent);
-        }
-
-        .hero h1 {
-            font-family: "Montserrat", sans-serif;
-            font-size: clamp(2.2rem, 4vw, 2.9rem);
-            line-height: 1.1;
-            margin-bottom: 0.9rem;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, #ff2f6e, #ffde7b, #5c7cff);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero-sub {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            max-width: 540px;
-            margin-bottom: 1.3rem;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.85rem;
-        }
-
-        .hero-meta span {
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-            color: var(--text-muted);
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-        }
-
-        .btn-primary,
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.6rem 1.1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #ff7a3c);
-            color: #050509;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary:hover {
-            filter: brightness(1.08);
-        }
-
-        .btn-ghost {
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text);
-            background: rgba(7,7,15,0.8);
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255,255,255,0.05);
-        }
-
-        .btn-icon {
-            font-size: 1.1rem;
-        }
-
-        .hero-image-card {
-            position: relative;
-            border-radius: 26px;
-            overflow: hidden;
-            background: radial-gradient(circle at top left, #5c7cff 0, #050509 45%);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .hero-image-card img {
-            width: 100%;
-            height: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .hero-tag {
-            position: absolute;
-            left: 1.1rem;
-            bottom: 1.1rem;
-            padding: 0.4rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(0,0,0,0.72);
-            border: 1px solid rgba(255,255,255,0.16);
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .hero-tag-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #38f28e;
-        }
-
-        /* LAYOUT GERAL */
-
-        section {
-            margin-bottom: 2.8rem;
-        }
-
-        .section-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-kicker {
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            letter-spacing: 0.16em;
-            color: var(--accent-2);
-            margin-bottom: 0.4rem;
-        }
-
-        .section-title {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .section-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 640px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-soft);
-            padding: 1.35rem 1.4rem;
-            box-shadow: 0 18px 30px rgba(0,0,0,0.4);
-        }
-
-        .card-alt {
-            background: linear-gradient(145deg, #121220, #070713);
-        }
-
-        .card h3 {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.05rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .card p {
-            font-size: 0.93rem;
-            color: var(--text-muted);
-        }
-
-        .tag-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.78rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.02);
-            color: var(--text-muted);
-        }
-
-        .tag-pill strong {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .bio-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-            gap: 1.7rem;
-        }
-
-        .bio-facts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 0.8rem;
-            margin-top: 0.9rem;
-        }
-
-        .bio-fact {
-            padding: 0.7rem 0.8rem;
-            border-radius: var(--radius-md);
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.82rem;
-        }
-
-        .bio-fact span.label {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        .bio-fact span.value {
-            font-weight: 600;
-        }
-
-        /* DISCOGRAFIA / POSTS */
-
-        .post-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .post {
-            display: grid;
-            grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.1fr);
-            gap: 1.2rem;
-            padding: 1.1rem 1.2rem;
-            border-radius: var(--radius-lg);
-            background: radial-gradient(circle at top left, rgba(92,124,255,0.14), transparent 60%);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .post-main h3 {
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.05rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .post-meta {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-bottom: 0.4rem;
-        }
-
-        .post-main p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .post-links {
-            margin-top: 0.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .chip {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.65rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(5,5,20,0.9);
-            color: var(--text-muted);
-        }
-
-        .post-cover {
-            position: relative;
-        }
-
-        .post-cover img {
-            width: 100%;
-            border-radius: var(--radius-md);
-            object-fit: cover;
-            max-height: 190px;
-        }
-
-        .post-cover span {
-            position: absolute;
-            left: 0.6rem;
-            bottom: 0.6rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            background: rgba(0,0,0,0.75);
-            font-size: 0.75rem;
-        }
-
-        /* GRID DE RELEASES */
-
-        .release-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1rem;
-        }
-
-        .release-card {
-            background: rgba(8,8,18,0.9);
-            border-radius: var(--radius-md);
-            padding: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.07);
-            font-size: 0.85rem;
-        }
-
-        .release-card h4 {
-            font-size: 0.94rem;
-            margin-bottom: 0.1rem;
-            font-family: "Montserrat", sans-serif;
-        }
-
-        .release-meta {
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .release-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-top: 0.3rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.75rem;
-            padding: 0.18rem 0.55rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: var(--text-muted);
-        }
-
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 999px;
-            background: var(--accent);
-        }
-
-        /* GALERIA */
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.08);
-            background: #000;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            max-height: 260px;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            left: 0.7rem;
-            bottom: 0.7rem;
-            font-size: 0.78rem;
-            padding: 0.25rem 0.55rem;
-            border-radius: 999px;
-            background: rgba(0,0,0,0.78);
-        }
-
-        /* NÚMEROS */
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 1rem;
-        }
-
-        .stat-card {
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            background: radial-gradient(circle at top left, rgba(255,47,110,0.14), rgba(5,5,10,0.95));
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-family: "Montserrat", sans-serif;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
-
-        .stat-note {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-top: 0.45rem;
-        }
-
-        /* AGENDA */
-
-        .timeline {
-            border-left: 1px dashed rgba(255,255,255,0.15);
-            padding-left: 1rem;
-        }
-
-        .timeline-item {
-            margin-bottom: 1.1rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -1.2rem;
-            top: 0.25rem;
-            width: 9px;
-            height: 9px;
-            border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(255,47,110,0.2);
-        }
-
-        .timeline-date {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent-2);
-        }
-
-        .timeline-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .timeline-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 1.4rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        footer a {
-            color: var(--accent-2);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* RESPONSIVO */
-
-        @media (max-width: 880px) {
-            .hero-grid,
-            .bio-grid,
-            .grid-2,
-            .post {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 2.4rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav {
-                flex-wrap: wrap;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .wrapper {
-                padding-inline: 1rem;
-            }
-
-            .hero-image-card img {
-                max-height: 360px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akashi Cruz — Links Oficiais</title>
+  <meta name="description" content="Página link na bio para Akashi Cruz: música, vídeos, lançamentos, redes sociais e contato comercial." />
+  <meta name="theme-color" content="#09060f" />
+  <meta property="og:title" content="Akashi Cruz — Links Oficiais" />
+  <meta property="og:description" content="Ouça os lançamentos, assista aos clipes e acompanhe Akashi Cruz nas plataformas." />
+  <meta property="og:image" content="https://portalrnd.com.br/wp-content/uploads/2024/03/Akashi.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#07050d;
+      --panel:rgba(255,255,255,.075);
+      --panel-2:rgba(255,255,255,.105);
+      --text:#fff8ff;
+      --muted:#b9adc9;
+      --line:rgba(255,255,255,.14);
+      --pink:#ff2f7a;
+      --violet:#8d5cff;
+      --cyan:#57e2ff;
+      --gold:#f8d16b;
+      --green:#63ffae;
+      --shadow:0 26px 80px rgba(0,0,0,.55);
+      --radius:28px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255,47,122,.26), transparent 30%),
+        radial-gradient(circle at 85% 12%, rgba(87,226,255,.15), transparent 28%),
+        radial-gradient(circle at 50% 88%, rgba(141,92,255,.22), transparent 35%),
+        linear-gradient(180deg,#090611 0%,#050309 100%);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;inset:0;
+      pointer-events:none;
+      opacity:.33;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.34'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
+    }
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(1040px,calc(100% - 28px));margin:0 auto;padding:18px 0 42px;position:relative;z-index:1}
+    .topbar{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:10px 12px;margin-bottom:22px;
+      border:1px solid var(--line);border-radius:999px;
+      background:rgba(7,5,13,.72);backdrop-filter:blur(18px);
+      box-shadow:0 10px 36px rgba(0,0,0,.25);
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;font-size:.86rem}
+    .brand-mark{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--violet),var(--cyan));color:#090611;box-shadow:0 0 32px rgba(255,47,122,.35)}
+    .mini-nav{display:flex;gap:6px;align-items:center}
+    .mini-nav a{padding:9px 12px;border-radius:999px;color:var(--muted);font-weight:700;font-size:.78rem;border:1px solid transparent}
+    .mini-nav a:hover{background:rgba(255,255,255,.08);border-color:var(--line);color:var(--text)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;margin-bottom:18px}
+    .glass{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.045));box-shadow:var(--shadow);backdrop-filter:blur(22px)}
+    .hero-copy{padding:34px;position:relative;overflow:hidden;min-height:540px;display:flex;flex-direction:column;justify-content:space-between}
+    .hero-copy::after{content:"AKASHI";position:absolute;right:-20px;bottom:-22px;font-family:"Space Grotesk",sans-serif;font-weight:900;font-size:7rem;letter-spacing:-.08em;line-height:.8;color:rgba(255,255,255,.035);pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;width:max-content;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);color:#e5d9ff;font-weight:800;font-size:.78rem;letter-spacing:.02em}
+    .pulse{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 7px rgba(99,255,174,.1),0 0 22px rgba(99,255,174,.7)}
+    h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:clamp(3.2rem,9vw,7rem);line-height:.82;letter-spacing:-.075em;text-transform:uppercase;margin:24px 0 18px}
+    .gradient{background:linear-gradient(135deg,#fff 5%,var(--gold) 25%,var(--pink) 55%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.08rem;line-height:1.75;color:#ddd2eb;max-width:620px}
+    .signature{margin-top:22px;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(0,0,0,.20);color:#f6ecff;font-size:.96rem;line-height:1.65}
+    .signature strong{color:var(--gold)}
+    .hero-photo{min-height:540px;position:relative;overflow:hidden;background:#111}
+    .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.05)}
+    .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.82) 100%),linear-gradient(90deg,rgba(255,47,122,.2),transparent 45%)}
+    .photo-badge{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:16px;border-radius:22px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.46);backdrop-filter:blur(14px)}
+    .photo-badge span{display:block;color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em}.photo-badge b{font-size:1.08rem}
+    .primary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+    .big-link{position:relative;overflow:hidden;min-height:116px;padding:18px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.07);display:flex;flex-direction:column;justify-content:space-between;transition:.25s ease;box-shadow:0 18px 45px rgba(0,0,0,.22)}
+    .big-link:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.105)}
+    .big-link::before{content:"";position:absolute;inset:auto -20% -50% auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%)}
+    .big-link .icon{font-size:1.55rem}.big-link b{font-family:"Space Grotesk";font-size:1.18rem}.big-link small{color:var(--muted);font-weight:700}
+    .spotify{background:linear-gradient(135deg,rgba(30,215,96,.16),rgba(255,255,255,.045))}.youtube{background:linear-gradient(135deg,rgba(255,0,0,.18),rgba(255,255,255,.045))}.booking{background:linear-gradient(135deg,rgba(248,209,107,.18),rgba(255,255,255,.045))}
+    .section{margin-top:18px;padding:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}.kicker{font-weight:900;text-transform:uppercase;letter-spacing:.15em;font-size:.74rem;color:var(--cyan)}h2{font-family:"Space Grotesk";font-size:clamp(1.5rem,4vw,2.5rem);letter-spacing:-.04em;margin-top:4px}.desc{color:var(--muted);max-width:630px;line-height:1.65}.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.18);font-weight:800;color:#f8edff;font-size:.8rem}
+    .link-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.platform{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:rgba(0,0,0,.20);transition:.22s ease}.platform:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}.platform-left{display:flex;align-items:center;gap:12px}.platform-icon{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,47,122,.22),rgba(87,226,255,.12));font-size:1.25rem}.platform b{display:block}.platform small{display:block;color:var(--muted);margin-top:2px}.arrow{color:var(--muted);font-weight:900}
+    .release-feature{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;align-items:stretch}.cover-card{min-height:330px;border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--line);background:#101}.cover-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.cover-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.83))}.cover-label{position:absolute;z-index:1;left:16px;right:16px;bottom:16px}.cover-label small{color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.14em}.cover-label h3{font-family:"Space Grotesk";font-size:2rem;letter-spacing:-.04em}.release-copy{padding:22px;border-radius:24px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12)}.release-copy p{color:#ded2ea;line-height:1.75}.quote-line{margin-top:16px;padding:16px;border-left:3px solid var(--pink);border-radius:14px;background:rgba(255,47,122,.09);color:#fff}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);font-weight:900}.btn.main{background:linear-gradient(135deg,var(--pink),var(--violet));border-color:transparent;color:#fff}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+    .vibe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.vibe{min-height:170px;padding:16px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));display:flex;flex-direction:column;justify-content:space-between}.vibe:nth-child(2){background:linear-gradient(145deg,rgba(87,226,255,.12),rgba(255,255,255,.035))}.vibe:nth-child(3){background:linear-gradient(145deg,rgba(141,92,255,.15),rgba(255,255,255,.035))}.vibe:nth-child(4){background:linear-gradient(145deg,rgba(248,209,107,.13),rgba(255,255,255,.035))}.vibe h3{font-family:"Space Grotesk";font-size:1.25rem}.vibe p{color:var(--muted);font-size:.9rem;line-height:1.55}.tag{width:max-content;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.12);font-size:.74rem;font-weight:900;color:#f0e8ff}
+    .songs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.song{padding:16px;border-radius:22px;border:1px solid var(--line);background:rgba(0,0,0,.22);min-height:205px;display:flex;flex-direction:column;justify-content:space-between}.song-top{display:flex;justify-content:space-between;gap:10px}.song h3{font-family:"Space Grotesk";font-size:1.18rem}.song p{margin-top:10px;color:var(--muted);line-height:1.55;font-size:.92rem}.song a{margin-top:14px;color:#fff;font-weight:900;font-size:.9rem}.new{color:#07050d;background:linear-gradient(135deg,var(--gold),#fff);padding:5px 8px;border-radius:999px;font-size:.68rem;font-weight:1000;height:max-content;white-space:nowrap}
+    .embed-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}.embed-card{padding:12px;border-radius:24px;border:1px solid var(--line);background:rgba(0,0,0,.20)}iframe{border:0;border-radius:16px;width:100%}
+    .contact-box{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.contact-card{padding:22px;border-radius:24px;background:rgba(0,0,0,.22);border:1px solid var(--line)}.contact-card p{color:var(--muted);line-height:1.7}.email{display:block;margin-top:16px;padding:16px;border-radius:18px;background:linear-gradient(135deg,rgba(248,209,107,.18),rgba(255,255,255,.05));border:1px solid rgba(248,209,107,.24);font-weight:1000;font-size:1.03rem;word-break:break-word}.mini-stats{display:grid;gap:10px}.stat{padding:16px;border-radius:20px;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.12)}.stat b{display:block;font-family:"Space Grotesk";font-size:1.45rem}.stat span{color:var(--muted);font-size:.85rem}
+    footer{padding:24px 6px 0;color:var(--muted);font-size:.82rem;line-height:1.65;text-align:center}.demo-note{margin-top:10px;color:#897d9a}
+    @media(max-width:900px){.hero,.release-feature,.contact-box{grid-template-columns:1fr}.hero-copy,.hero-photo{min-height:auto}.hero-photo{height:520px}.primary-grid,.songs{grid-template-columns:1fr}.vibe-grid{grid-template-columns:repeat(2,1fr)}.embed-wrap,.link-list{grid-template-columns:1fr}.mini-nav{display:none}.section-head{display:block}.pill{margin-top:12px}}
+    @media(max-width:540px){.shell{width:min(100% - 18px,1040px);padding-top:9px}.topbar{top:6px}.hero-copy,.section{padding:20px}.hero-photo{height:450px}.photo-badge{display:block}.primary-grid{gap:10px}.vibe-grid{grid-template-columns:1fr}h1{font-size:4.2rem}.lead{font-size:.98rem}.hero-copy::after{font-size:4.6rem}.link-list{gap:10px}.platform{padding:13px}.platform-icon{width:38px;height:38px}.songs{gap:10px}}
+  </style>
 </head>
 <body>
-
-<header>
-    <nav class="nav">
-        <div class="logo">
-            <div class="logo-badge">AK</div>
-            <span>Akashi Cruz Blog</span>
-        </div>
-        <div class="nav-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#discografia">Discografia</a>
-            <a href="#coffee-shop">Coffee Shop</a>
-            <a href="#debi-loide">Debi &amp; Lóide</a>
-            <a href="#numeros">Números</a>
-            <a href="#agenda">Agenda</a>
-            <a href="#galeria">Galeria</a>
-        </div>
-        <div class="nav-cta">
-            <a href="#redes" title="Ir para links oficiais">Seguir o Akashi</a>
-        </div>
+  <main class="shell">
+    <nav class="topbar" aria-label="Navegação principal">
+      <a class="brand" href="#top" aria-label="Início">
+        <span class="brand-mark">AK</span>
+        <span>Akashi Cruz</span>
+      </a>
+      <div class="mini-nav">
+        <a href="#links">Links</a>
+        <a href="#lancamentos">Lançamentos</a>
+        <a href="#vibes">Vibes</a>
+        <a href="#contato">Booking</a>
+      </div>
     </nav>
-</header>
 
-<main class="wrapper">
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-grid">
-            <div>
-                <div class="hero-title-badge">
-                    <span class="dot"></span>
-                    <span>Blog não-oficial de fã</span>
-                </div>
-                <h1>Akashi Cruz <span>– Rap, Geek &amp; Vibe</span></h1>
-                <p class="hero-sub">
-                    Rapper, cantor e compositor brasileiro que mistura trap, boom bap, cultura geek e games
-                    em letras sinceras, flows agressivos e melodias marcantes. De Viradouro (SP) pro mundo,
-                    construindo uma carreira com milhões de streams e uma fanbase forte nas redes.
-                </p>
-                <div class="hero-meta">
-                    <span>1998 • Brasil • Signo de Leão</span>
-                    <span>Rap · Trap · Hip hop contemporâneo</span>
-                    <span>Mixtape <strong>Debi &amp; Lóide</strong> · álbum <strong>Coffee Shop</strong></span>
-                </div>
-                <div class="hero-buttons">
-                    <a class="btn-primary" href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">
-                        <span class="btn-icon">▶</span>
-                        Ouvir no Spotify
-                    </a>
-                    <a class="btn-ghost" href="https://www.youtube.com/@AkashiCruz" target="_blank" rel="noopener noreferrer">
-                        <span class="btn-icon">▶</span>
-                        Canal no YouTube
-                    </a>
-                    <a class="btn-ghost" href="https://www.instagram.com/akashi_cruz/" target="_blank" rel="noopener noreferrer">
-                        <span class="btn-icon">📸</span>
-                        Instagram
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-image-card">
-                <img src="https://portalrnd.com.br/wp-content/uploads/2024/03/Akashi.png"
-                     alt="Akashi Cruz usando boné roxo e jaqueta preta, posando para foto promocional" />
-                <div class="hero-tag">
-                    <span class="hero-tag-dot"></span>
-                    <span>“Tokyo Town” &amp; era Coffee Shop</span>
-                </div>
-            </div>
+    <section class="hero" id="top">
+      <div class="hero-copy glass">
+        <div>
+          <span class="eyebrow"><span class="pulse"></span> música nova no ar</span>
+          <h1>AKASHI <span class="gradient">CRUZ</span></h1>
+          <p class="lead">
+            Rap, trap, madrugada, romance e cultura geek no mesmo universo. Aqui você encontra meus lançamentos,
+            clipes, redes e o caminho mais rápido pra apertar play.
+          </p>
+          <div class="signature">
+            <strong>Minha estética é contraste:</strong> às vezes é pancada, às vezes é sentimento. Tem faixa pra quem quer cantar alto, pra quem quer pensar sozinho e pra quem cresceu misturando rap, anime, internet e vida real.
+          </div>
         </div>
+        <div class="actions">
+          <a class="btn main" href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">▶ Ouvir agora</a>
+          <a class="btn" href="https://www.youtube.com/@AkashiCruz" target="_blank" rel="noopener noreferrer">Assistir clipes</a>
+        </div>
+      </div>
+
+      <aside class="hero-photo glass" aria-label="Foto promocional de Akashi Cruz">
+        <img src="https://portalrnd.com.br/wp-content/uploads/2024/03/Akashi.png" alt="Akashi Cruz em foto promocional" />
+        <div class="photo-badge">
+          <div>
+            <span>artista • compositor</span>
+            <b>Viradouro/SP → Brasil</b>
+          </div>
+          <span>hip hop · trap · pop geek</span>
+        </div>
+      </aside>
     </section>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-        <div class="section-header">
-            <div class="section-kicker">Biografia</div>
-            <h2 class="section-title">Quem é Akashi Cruz?</h2>
-            <p class="section-desc">
-                Artista de hip hop contemporâneo que combina flows rápidos, referências de cultura pop e
-                letras introspectivas. Começou rimando com amigos na internet e hoje acumula milhões de
-                plays, collabs importantes e um público fiel em todo o Brasil.
-            </p>
-        </div>
-
-        <div class="bio-grid">
-            <article class="card card-alt">
-                <h3>Origem e primeiros passos</h3>
-                <p>
-                    Akashi Cruz nasceu em <strong>14 de agosto de 1998</strong>, no Brasil, e cresceu em um
-                    ambiente totalmente musical: ele é filho de músico e viveu desde cedo cercado por som,
-                    instrumentos e referências de rap, pop e cultura geek.
-                </p>
-                <p style="margin-top:0.6rem;">
-                    Morador da cidade de <strong>Viradouro, interior de São Paulo</strong>, começou a
-                    construir seu sonho de viver de música criando rimas e treinando improviso com outras
-                    pessoas em grupos de <strong>WhatsApp</strong> e servidores de
-                    <strong>Discord</strong>. Nesse período ele lapidou a forma de escrever, o jeito de
-                    contar histórias e a identidade vocal que mais tarde marcaria suas faixas.
-                </p>
-                <p style="margin-top:0.6rem;">
-                    Com o tempo, Akashi migrou dos improvisos on-line para os lançamentos oficiais em
-                    plataformas digitais, trazendo um som que passeia do <strong>trap</strong> ao
-                    <strong>boom bap</strong>, utilizando <em>speed flow</em>, punchlines e também momentos
-                    mais melódicos, em que canta e cria climas românticos e nostálgicos.
-                </p>
-
-                <div class="bio-facts">
-                    <div class="bio-fact">
-                        <span class="label">Nome artístico</span>
-                        <span class="value">Akashi Cruz</span>
-                    </div>
-                    <div class="bio-fact">
-                        <span class="label">Nascimento</span>
-                        <span class="value">14/08/1998</span>
-                    </div>
-                    <div class="bio-fact">
-                        <span class="label">Cidade</span>
-                        <span class="value">Viradouro – SP</span>
-                    </div>
-                    <div class="bio-fact">
-                        <span class="label">Signo</span>
-                        <span class="value">Leão</span>
-                    </div>
-                    <div class="bio-fact">
-                        <span class="label">Gravadora</span>
-                        <span class="value">GRAV</span>
-                    </div>
-                    <div class="bio-fact">
-                        <span class="label">Estilos</span>
-                        <span class="value">Rap · Trap · Lo-fi</span>
-                    </div>
-                </div>
-            </article>
-
-            <aside class="card">
-                <h3>Estética musical &amp; influências</h3>
-                <p>
-                    A identidade de Akashi mistura elementos do <strong>hip hop</strong> tradicional com a
-                    energia do <strong>trap</strong> moderno e referências da cultura geek, animes, games e
-                    universo pop. Em suas faixas, ele transita entre:
-                </p>
-                <ul style="margin-top:0.6rem; padding-left:1.1rem; font-size:0.9rem; color:var(--text-muted);">
-                    <li>Rimas agressivas com <em>punchlines</em> bem construídas;</li>
-                    <li>Refrões melódicos e emotivos, com clima de lovesong;</li>
-                    <li>Experimentos com reggaeton, jersey club e sonoridades mais pop;</li>
-                    <li>Referências a filmes, animes, personagens e cultura de internet.</li>
-                </ul>
-                <p style="margin-top:0.7rem;">
-                    Essa mistura faz com que o som do Akashi converse tanto com o público do rap/trap quanto
-                    com quem vem de nichos geek e de internet, criando uma comunidade muito engajada em torno
-                    das músicas, clipes e conteúdos que ele posta nas redes.
-                </p>
-            </aside>
-        </div>
+    <section class="primary-grid" aria-label="Links principais">
+      <a class="big-link spotify" href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">
+        <span class="icon">🟢</span><b>Spotify</b><small>perfil oficial + lançamentos</small>
+      </a>
+      <a class="big-link youtube" href="https://www.youtube.com/@AkashiCruz" target="_blank" rel="noopener noreferrer">
+        <span class="icon">🔴</span><b>YouTube</b><small>clipes, visualizers e faixas</small>
+      </a>
+      <a class="big-link booking" href="mailto:contato@grav.com.br?subject=Booking%20Akashi%20Cruz">
+        <span class="icon">⚡</span><b>Shows & Publicidade</b><small>contato@grav.com.br</small>
+      </a>
     </section>
 
-    <!-- DISCOGRAFIA RESUMO -->
-    <section id="discografia">
-        <div class="section-header">
-            <div class="section-kicker">Carreira &amp; Lançamentos</div>
-            <h2 class="section-title">Pontos-chave da discografia</h2>
-            <p class="section-desc">
-                Ao longo de poucos anos, o catálogo do Akashi cresceu muito: singles solo, feats marcantes,
-                uma mixtape colaborativa e, mais recentemente, seu álbum completo <strong>Coffee Shop</strong>.
-            </p>
+    <section class="section glass" id="links">
+      <div class="section-head">
+        <div>
+          <div class="kicker">link na bio</div>
+          <h2>Todos os caminhos em um lugar</h2>
+          <p class="desc">Um hub direto para streaming, vídeos, redes sociais e contato comercial — pensado para ficar na bio do Instagram.</p>
         </div>
+        <span class="pill">sem precisar hospedar imagem</span>
+      </div>
 
-        <div class="grid-2">
-            <div class="post-list">
-                <!-- Psicológico -->
-                <article class="post">
-                    <div class="post-main">
-                        <h3>“Psicológico” – Single (2023)</h3>
-                        <div class="post-meta">
-                            Single de 2023 que explora temas de saúde mental, pressão e identidade, misturando
-                            crítica social com referências de cultura pop.
-                        </div>
-                        <p>
-                            A faixa marca um momento em que o Akashi aprofunda as letras, falando de remédios,
-                            expectativas externas e do conflito entre mostrar a verdade ou seguir a “mentira
-                            que entretém”. O instrumental traz uma base densa, perfeita para o tom mais sério
-                            e introspectivo da música.
-                        </p>
-                        <div class="post-links">
-                            <a class="chip" href="https://open.spotify.com/album/1XGPrlGJKsOc2deYHYKvTu" target="_blank" rel="noopener noreferrer">
-                                Ouvir “Psicológico” no Spotify
-                            </a>
-                            <a class="chip" href="https://www.youtube.com/watch?v=gwFvK6C6N5Y" target="_blank" rel="noopener noreferrer">
-                                Versão no YouTube
-                            </a>
-                        </div>
-                    </div>
-                    <div class="post-cover">
-                        <img src="https://portalrnd.com.br/wp-content/uploads/2023/09/Akashi1-768x1024.jpg"
-                             alt="Foto de Akashi Cruz com iluminação roxa, mãos unidas em frente ao rosto" />
-                        <span>Fase introspectiva &amp; conceitual</span>
-                    </div>
-                </article>
-
-                <!-- Projeto X -->
-                <article class="post">
-                    <div class="post-main">
-                        <h3>“Projeto X” – feat. Lil Chainz &amp; TcheloBeats (2022)</h3>
-                        <div class="post-meta">
-                            Trap energético em colaboração com Lil Chainz e produção de TcheloBeats – um dos
-                            sons que ajudaram a consolidar a parceria entre os artistas.
-                        </div>
-                        <p>
-                            Inspirado em clima de festa fora de controle, “Projeto X” traz flows empolgantes
-                            e clima de filme de festa adolescente. A faixa se tornou um dos grandes cartões de
-                            visita da dupla Akashi &amp; Lil Chainz, acumulando milhões de streams nas
-                            plataformas.
-                        </p>
-                        <div class="post-links">
-                            <a class="chip" href="https://open.spotify.com/track/6ZLJ9FVzaJekk5Xdpi79u7" target="_blank" rel="noopener noreferrer">
-                                Ouvir “Projeto X”
-                            </a>
-                            <a class="chip" href="https://music.apple.com/mz/album/projeto-x-single/1760066319" target="_blank" rel="noopener noreferrer">
-                                Apple Music
-                            </a>
-                        </div>
-                    </div>
-                    <div class="post-cover">
-                        <img src="https://res.cloudinary.com/shotgun/image/upload/c_limit%2Cw_3840/fl_lossy/f_auto/q_auto/production/artworks/artists/akashi_cruz.jpg"
-                             alt="Retrato de Akashi Cruz com camiseta escura e corrente prateada" />
-                        <span>Colaboração com Lil Chainz</span>
-                    </div>
-                </article>
-
-                <!-- Vilão -->
-                <article class="post">
-                    <div class="post-main">
-                        <h3>“Vilão” – com Lil Fuub (2022)</h3>
-                        <div class="post-meta">
-                            Hit colaborativo com Lil Fuub, misturando humor, ostentação e um refrão forte que
-                            gruda na cabeça.
-                        </div>
-                        <p>
-                            “Vilão” é aquele tipo de som que equilibra personagem e vulnerabilidade: o eu
-                            lírico vive como se fosse o vilão da história, mas o tom leve e brincalhão faz a
-                            faixa funcionar tanto em festa quanto no fone. O Akashi entra somando presença
-                            vocal e carisma, deixando o registro ainda mais memorável.
-                        </p>
-                        <div class="post-links">
-                            <a class="chip" href="https://open.spotify.com/track/2ok4WtXVZNDhFSi6k6vYxp" target="_blank" rel="noopener noreferrer">
-                                Ouvir “Vilão”
-                            </a>
-                            <a class="chip" href="https://music.apple.com/br/song/vil%C3%A3o/1761285470" target="_blank" rel="noopener noreferrer">
-                                Mais infos da faixa
-                            </a>
-                        </div>
-                    </div>
-                    <div class="post-cover">
-                        <img src="https://portalrnd.com.br/wp-content/uploads/2024/03/Akashi.png"
-                             alt="Close de Akashi Cruz com boné roxo e jaqueta preta" />
-                        <span>Feat com Lil Fuub</span>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Grid de releases -->
-            <aside class="card">
-                <h3>Lançamentos em destaque</h3>
-                <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.9rem;">
-                    Alguns dos lançamentos que ajudaram a construir o catálogo do Akashi, passando por singles,
-                    feats e o álbum de estúdio:
-                </p>
-
-                <div class="release-grid">
-                    <div class="release-card">
-                        <h4>Tokyo Town (2024)</h4>
-                        <div class="release-meta">Single solo • Rap / Trap com clima nostálgico</div>
-                        <p>
-                            Música reflexiva que fala sobre reencontros, saudade e a vontade de reviver um
-                            momento bom, fugindo dos problemas por um instante.
-                        </p>
-                        <div class="release-links">
-                            <a class="badge" href="https://open.spotify.com/album/5dXi8ZmxlGsw5Z2wlMKucY" target="_blank" rel="noopener noreferrer">
-                                <span class="badge-dot"></span> Spotify
-                            </a>
-                            <a class="badge" href="https://music.apple.com/br/album/tokyo-town-single/1731908265" target="_blank" rel="noopener noreferrer">
-                                Apple Music
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="release-card">
-                        <h4>Psicológico (2023)</h4>
-                        <div class="release-meta">Single • Rap intenso &amp; pessoal</div>
-                        <p>
-                            Faixa que discute saúde mental, expectativas da indústria e a pressão sobre o
-                            artista, com versos fortes e base sombria.
-                        </p>
-                        <div class="release-links">
-                            <a class="badge" href="https://open.spotify.com/album/1XGPrlGJKsOc2deYHYKvTu" target="_blank">
-                                <span class="badge-dot"></span> Abrir single
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="release-card">
-                        <h4>Debi &amp; Lóide (2023)</h4>
-                        <div class="release-meta">Mixtape com Lil Chainz • 8 faixas</div>
-                        <p>
-                            Projeto colaborativo cheio de humor, referências a filmes e experimentações sonoras:
-                            trap, reggaeton, jersey club, reggae com pegada pop e muito mais.
-                        </p>
-                        <div class="release-links">
-                            <a class="badge" href="https://portalrnd.com.br/debi-loide-conheca-a-mixtape-colaborativa-de-lil-chainz-e-akashi-cruz/" target="_blank" rel="noopener noreferrer">
-                                <span class="badge-dot"></span> Ler matéria RND
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="release-card">
-                        <h4>Coffee Shop (2025)</h4>
-                        <div class="release-meta">Álbum • Várias faixas &amp; climas</div>
-                        <p>
-                            Primeiro álbum completo de Akashi, com músicas que transitam entre lovesong,
-                            vibez de madrugada, trap e hip hop mais clássico.
-                        </p>
-                        <div class="release-links">
-                            <a class="badge" href="#coffee-shop">
-                                <span class="badge-dot"></span> Ver detalhes
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </div>
+      <div class="link-list">
+        <a class="platform" href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">♪</span><span><b>Spotify</b><small>ouça os singles, EPs e álbuns</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://music.apple.com/br/artist/akashi-cruz/1599403778" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon"></span><span><b>Apple Music</b><small>catálogo completo nas plataformas</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://www.youtube.com/@AkashiCruz" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">▶</span><span><b>YouTube</b><small>clipes oficiais e visualizers</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://www.instagram.com/akashi_cruz/" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">◎</span><span><b>Instagram</b><small>@akashi_cruz</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://www.tiktok.com/@akashicruzofc" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">♬</span><span><b>TikTok</b><small>@akashicruzofc</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://www.deezer.com/br/artist/109738012" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">◆</span><span><b>Deezer</b><small>discografia e destaques</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="https://x.com/akashi_cruz" target="_blank" rel="noopener noreferrer"><span class="platform-left"><span class="platform-icon">𝕏</span><span><b>X / Twitter</b><small>@akashi_cruz</small></span></span><span class="arrow">→</span></a>
+        <a class="platform" href="mailto:contato@grav.com.br?subject=Akashi%20Cruz%20-%20Shows%20e%20Publicidade"><span class="platform-left"><span class="platform-icon">✉</span><span><b>Comercial</b><small>shows, publicidade e propostas</small></span></span><span class="arrow">→</span></a>
+      </div>
     </section>
 
-    <!-- COFFEE SHOP -->
-    <section id="coffee-shop">
-        <div class="section-header">
-            <div class="section-kicker">Álbum de estúdio</div>
-            <h2 class="section-title">Coffee Shop (2025)</h2>
-            <p class="section-desc">
-                Lançado em 2025, <strong>Coffee Shop</strong> é o primeiro álbum completo do Akashi. O disco
-                traz faixas que lembram madrugada, romance, encontros e rotina, sempre com a pegada de rap e
-                trap que marcou a carreira dele.
-            </p>
+    <section class="section glass" id="lancamentos">
+      <div class="section-head">
+        <div>
+          <div class="kicker">lançamentos</div>
+          <h2>Últimos drops</h2>
+          <p class="desc">Textos pensados como copy oficial: menos ficha técnica, mais sensação de quem aperta play.</p>
         </div>
+        <span class="pill">2026 · singles e collabs</span>
+      </div>
 
-        <div class="grid-2">
-            <article class="card card-alt">
-                <h3>Clima &amp; conceito</h3>
-                <p>
-                    Em <em>Coffee Shop</em>, Akashi cria um universo sonoro próprio, com músicas que soam
-                    como cenas de um mesmo filme: encontros em cafeteria, amores que vão e voltam, mensagens
-                    não respondidas e aquela vibe de noite longa pensando na vida.
-                </p>
-                <p style="margin-top:0.6rem;">
-                    As faixas alternam entre momentos mais românticos e outros mais sombrios, mantendo sempre
-                    a combinação de rimas técnicas com melodias marcantes. O álbum reforça a versatilidade do
-                    artista ao cantar, rimar e explorar diferentes flows dentro de uma mesma narrativa.
-                </p>
-
-                <div style="margin-top:0.9rem;">
-                    <span class="tag-pill">
-                        <strong>Gêneros:</strong> Rap · Trap · R&amp;B
-                    </span>
-                    <span class="tag-pill">
-                        <strong>Recomendado para:</strong> ouvir de fone &amp; madrugada
-                    </span>
-                </div>
-            </article>
-
-            <aside class="card">
-                <h3>Faixas ligadas ao álbum</h3>
-                <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.7rem;">
-                    Alguns sons associados ao universo de <strong>Coffee Shop</strong> aparecem em lançamentos
-                    e clipes nas plataformas de vídeo:
-                </p>
-                <ul style="list-style: none; font-size:0.9rem; color:var(--text-muted);">
-                    <li>
-                        ☕ <strong>Era Uma Vez</strong> –
-                        <a href="https://www.youtube.com/watch?v=9VsdLavOjAA" target="_blank" rel="noopener noreferrer">
-                            clipe no YouTube
-                        </a>
-                    </li>
-                    <li>
-                        ☕ <strong>Morena</strong> –
-                        <a href="https://www.youtube.com/watch?v=QDw9N4F2QIo" target="_blank" rel="noopener noreferrer">
-                            faixa com clima romântico
-                        </a>
-                    </li>
-                    <li>
-                        ☕ <strong>For You</strong> –
-                        <a href="https://www.youtube.com/watch?v=sXnG8fT1l_I" target="_blank" rel="noopener noreferrer">
-                            som com pegada mais melódica
-                        </a>
-                    </li>
-                    <li>
-                        ☕ <strong>Moça</strong> –
-                        <a href="https://www.youtube.com/watch?v=qgjhUvjSxBI" target="_blank" rel="noopener noreferrer">
-                            narrativa afetiva, clima de encontro marcante
-                        </a>
-                    </li>
-                    <li>
-                        ☕ <strong>Alabai</strong> –
-                        <a href="https://www.youtube.com/watch?v=LN2jdZ0qD4Q" target="_blank" rel="noopener noreferrer">
-                            faixa nº 8 do álbum
-                        </a>
-                    </li>
-                    <li>
-                        ☕ <strong>6am</strong> –
-                        <a href="https://www.youtube.com/watch?v=IpOQ7ioB5uA" target="_blank" rel="noopener noreferrer">
-                            vibe de madrugada e reflexão
-                        </a>
-                    </li>
-                </ul>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.7rem;">
-                    As músicas do disco estão disponíveis em todas as plataformas digitais e aparecem em
-                    playlists de rap e trap atuais.
-                </p>
-            </aside>
+      <div class="release-feature">
+        <div class="cover-card">
+          <img src="https://cdn-images.dzcdn.net/images/cover/673c4b6927cfb93189627709213ea86a/500x500-000000-80-0-0.jpg" alt="Capa do single Psicológico, de Akashi Cruz" />
+          <div class="cover-label"><small>faixa referência</small><h3>Psicológico</h3></div>
         </div>
+        <div class="release-copy">
+          <span class="tag">nova fase</span>
+          <h2 style="margin:10px 0 10px;">Entre o caos e a clareza</h2>
+          <p>
+            A linha mais intensa do Akashi vem quando ele transforma pressão em som. A estética de “Psicológico” abre espaço para uma fase mais direta: sentimento sem filtro, verso com peso e refrão que parece conversa de madrugada.
+          </p>
+          <p style="margin-top:10px;">
+            Para os lançamentos recentes, a página trata cada música como uma porta de entrada: quem chega pelo romance encontra uma vibe; quem chega pela pancada encontra outra; quem chega pelas referências geek entende o universo inteiro.
+          </p>
+          <div class="quote-line">
+            “Não é só sobre rimar bonito. É sobre pegar aquilo que tava preso na cabeça e transformar em faixa.”
+          </div>
+          <div class="actions">
+            <a class="btn main" href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">Abrir no Spotify</a>
+            <a class="btn" href="https://music.amazon.com.br/artists/B08LBV7M1J/akashi-cruz" target="_blank" rel="noopener noreferrer">Ver recentes</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="songs" style="margin-top:14px;">
+        <article class="song"><div><div class="song-top"><h3>LET THE WORLD BURN<br><span style="color:var(--muted);font-size:.86rem;">Akashi Cruz Remix</span></h3><span class="new">novo</span></div><p>Uma entrada de energia alta: clima de remix, estética explosiva e aquele contraste entre caos externo e presença vocal firme.</p></div><a href="https://open.spotify.com/track/4cXm0sDUfCsHQpRFEUi7z3" target="_blank" rel="noopener noreferrer">Ouvir faixa →</a></article>
+        <article class="song"><div><div class="song-top"><h3>Psicológico 2</h3><span class="new">2026</span></div><p>Continuação natural da parte mais mental e intensa do Akashi: pressão, autocobrança e a tentativa de organizar o barulho em música.</p></div><a href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">Abrir perfil →</a></article>
+        <article class="song"><div><div class="song-top"><h3>Bandeira Branca</h3><span class="new">2026</span></div><p>Faixa com cara de rendição emocional: quando o orgulho cansa e o sentimento pede espaço para falar mais alto.</p></div><a href="https://music.amazon.com.br/artists/B08LBV7M1J/akashi-cruz" target="_blank" rel="noopener noreferrer">Ver lançamento →</a></article>
+        <article class="song"><div><div class="song-top"><h3>Véu e Grinalda</h3><span class="new">2026</span></div><p>Romance com estética cinematográfica: amor, promessa, imagem forte e aquele drama bonito que combina com refrão melódico.</p></div><a href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">Ouvir no Spotify →</a></article>
+        <article class="song"><div><div class="song-top"><h3>Atriz</h3><span class="new">2026</span></div><p>Uma música sobre personagem, desejo e performance: quando a pessoa parece real, mas também parece estar sempre em cena.</p></div><a href="https://www.deezer.com/us/album/927982551" target="_blank" rel="noopener noreferrer">Abrir no Deezer →</a></article>
+        <article class="song"><div><div class="song-top"><h3>Quem é você?</h3><span class="new">2026</span></div><p>O tipo de pergunta que vira música quando alguém muda demais — ou quando a gente percebe que também mudou no processo.</p></div><a href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">Encontrar faixa →</a></article>
+      </div>
     </section>
 
-    <!-- DEBI & LÓIDE -->
-    <section id="debi-loide">
-        <div class="section-header">
-            <div class="section-kicker">Mixtape Colaborativa</div>
-            <h2 class="section-title">“Debi &amp; Lóide” – Akashi Cruz &amp; Lil Chainz</h2>
-            <p class="section-desc">
-                Lançada em 2023, a mixtape <strong>Debi &amp; Lóide</strong> marca a parceria entre Akashi
-                e Lil Chainz, misturando humor, referências a filmes e experimentações sonoras que fogem do
-                padrão.
-            </p>
+    <section class="section glass" id="vibes">
+      <div class="section-head">
+        <div>
+          <div class="kicker">escolha sua vibe</div>
+          <h2>Um artista, vários modos</h2>
+          <p class="desc">A página não vende só links: ela organiza o universo sonoro para quem está chegando agora.</p>
         </div>
-
-        <div class="grid-2">
-            <article class="card card-alt">
-                <h3>Visão geral do projeto</h3>
-                <p>
-                    Inspirada no filme clássico de comédia, a mixtape usa o conceito de “dois idiotas rimando
-                    muito” para criar um trabalho que é leve, divertido e cheio de energia. São oito faixas
-                    onde Akashi e Lil Chainz exploram vários estilos: trap pesado, jersey club, reggaeton,
-                    reggae com pegada pop e sons mais experimentais.
-                </p>
-                <p style="margin-top:0.6rem;">
-                    O projeto conta com participações de nomes como <strong>MHRAP</strong>,
-                    <strong>VMZ</strong>, <strong>Skiter</strong>, <strong>Lil Fuub</strong> e
-                    <strong>AKLIPE</strong>, além de produções de 6ee, TcheloBeats, SIMI e Sushiboy011. A
-                    identidade visual fica por conta do artista Xoriz, reforçando a estética criativa da
-                    mixtape.
-                </p>
-            </article>
-
-            <aside class="card">
-                <h3>Faixas &amp; climas</h3>
-                <ul style="list-style:none; font-size:0.9rem; color:var(--text-muted); margin-bottom:0.6rem;">
-                    <li><strong>DEBILOIDE</strong> – abertura divertida, trap clássico cheio de punchlines;</li>
-                    <li><strong>American Pie</strong> – clima de festa sem controle, com flows energéticos;</li>
-                    <li><strong>Pacman</strong> (feat. AKLIPE) – sequência intensa de flows e trocas rápidas;</li>
-                    <li><strong>BLACKPINK</strong> – referência ao universo K-pop em um trap dançante;</li>
-                    <li><strong>JERSEY CLUB</strong> – segundo single, trazendo o estilo que dá nome à faixa;</li>
-                    <li><strong>Rebola BB</strong> (feat. Lil Fuub) – reggaeton envolvente e acelerado;</li>
-                    <li><strong>LSD</strong> (feat. VMZ) – mistura de reggae com pop, vibe leve e romântica;</li>
-                    <li><strong>Faço Acontecer</strong> (feat. MHRAP) – fechamento agressivo, falando de
-                        superação e evolução.</li>
-                </ul>
-                <p style="font-size:0.83rem; color:var(--text-muted);">
-                    A ideia central da mixtape é fazer o público se sentir pra cima, com músicas para curtir
-                    com amigos, pensar em alguém especial e, ao mesmo tempo, ver o amadurecimento técnico dos
-                    artistas.
-                </p>
-                <div style="margin-top:0.6rem;">
-                    <a class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem;"
-                       href="https://portalrnd.com.br/debi-loide-conheca-a-mixtape-colaborativa-de-lil-chainz-e-akashi-cruz/"
-                       target="_blank" rel="noopener noreferrer">
-                        Ler análise completa no RND
-                    </a>
-                </div>
-            </aside>
-        </div>
+      </div>
+      <div class="vibe-grid">
+        <article class="vibe"><span class="tag">madrugada</span><div><h3>sentimento</h3><p>Faixas para ouvir sozinho, lembrar de alguém e deixar a cidade passar pela janela.</p></div></article>
+        <article class="vibe"><span class="tag">pancada</span><div><h3>trap</h3><p>Flow, punchline, energia e presença: o Akashi em modo direto, sem pedir licença.</p></div></article>
+        <article class="vibe"><span class="tag">geek</span><div><h3>referência</h3><p>Anime, games, internet e cultura pop viram linguagem dentro do rap.</p></div></article>
+        <article class="vibe"><span class="tag">clássicos</span><div><h3>essenciais</h3><p>As faixas que ajudam a entender a caminhada: “Projeto X”, “Vilão”, “Mugiwara”, “Lámen Freestyle”.</p></div></article>
+      </div>
     </section>
 
-    <!-- NÚMEROS -->
-    <section id="numeros">
-        <div class="section-header">
-            <div class="section-kicker">Resultados &amp; Alcance</div>
-            <h2 class="section-title">Números da carreira</h2>
-            <p class="section-desc">
-                Os números exatos mudam o tempo todo, mas já dá pra ter uma ideia do impacto do Akashi nas
-                plataformas e nas redes.
-            </p>
+    <section class="section glass">
+      <div class="section-head">
+        <div>
+          <div class="kicker">player</div>
+          <h2>Aperte play sem sair da página</h2>
+          <p class="desc">Embeds públicos do Spotify ajudam o fã a ouvir rápido e deixam a bio com cara de produto oficial.</p>
         </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">+290 mil</div>
-                <div class="stat-label">ouvintes mensais no Spotify (aprox.)</div>
-                <div class="stat-note">
-                    Contagem recente no perfil oficial, mostrando o alcance consolidado do artista.
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">+80 milhões</div>
-                <div class="stat-label">de streams somando áudio &amp; vídeo</div>
-                <div class="stat-note">
-                    Matérias especializadas citam dezenas de milhões de reproduções ao longo da carreira,
-                    incluindo colaborações.
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">Centenas de milhares</div>
-                <div class="stat-label">de inscritos no YouTube</div>
-                <div class="stat-note">
-                    Canal com clipes, versões oficiais e conteúdos voltados para a fanbase, sempre ativo com
-                    novos lançamentos.
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">+130 milhões</div>
-                <div class="stat-label">de streams citados em releases recentes</div>
-                <div class="stat-note">
-                    Releases da gravadora e matérias indicam que o artista ultrapassou a marca de 100M de
-                    plays somando seus trabalhos.
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="embed-wrap">
+        <div class="embed-card"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/68wF4X9K8JFav3YlPFtsR2?utm_source=generator" width="100%" height="352" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+        <div class="embed-card"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4cXm0sDUfCsHQpRFEUi7z3?utm_source=generator" width="100%" height="352" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      </div>
     </section>
 
-    <!-- AGENDA / SHOWS -->
-    <section id="agenda">
-        <div class="section-header">
-            <div class="section-kicker">Palco &amp; Presença ao vivo</div>
-            <h2 class="section-title">Shows &amp; eventos recentes</h2>
-            <p class="section-desc">
-                Além das plataformas digitais, Akashi também se destaca nos palcos, participando de eventos
-                ligados à cena rap, trap e até ao universo geek.
-            </p>
+    <section class="section glass" id="contato">
+      <div class="section-head">
+        <div>
+          <div class="kicker">booking</div>
+          <h2>Shows, publicidade e parcerias</h2>
+          <p class="desc">Área pensada para transformar atenção em proposta comercial.</p>
         </div>
-
-        <div class="grid-2">
-            <article class="card card-alt">
-                <h3>Eventos em destaque</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Julho 2025</div>
-                        <div class="timeline-title">Gravidade – São Paulo (Bronx011)</div>
-                        <div class="timeline-meta">
-                            Show em um dos eventos da cena rap paulista, reforçando a presença de Akashi nos
-                            palcos da capital.
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Novembro 2024</div>
-                        <div class="timeline-title">Gravidade Arena Show SP</div>
-                        <div class="timeline-meta">
-                            Participação em evento de grande porte, com público voltado para rap, trap e
-                            música urbana.
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Outubro 2024</div>
-                        <div class="timeline-title">Baile de Konoha SP – Guerra Ninja</div>
-                        <div class="timeline-meta">
-                            Festa com temática geek/anime, bem conectada à estética e às referências que
-                            aparecem nas letras do Akashi.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <aside class="card">
-                <h3>Por que o show dele é diferente?</h3>
-                <ul style="padding-left:1rem; font-size:0.9rem; color:var(--text-muted);">
-                    <li>Setlist que mistura hits, lovesongs e sons mais pesados;</li>
-                    <li>Clima de proximidade com o público, reforçando a comunidade formada on-line;</li>
-                    <li>Interação com temas geek, memes e referências de internet;</li>
-                    <li>Momento de catarse nos refrões mais conhecidos, como em “Projeto X” e “Vilão”.</li>
-                </ul>
-                <p style="font-size:0.83rem; color:var(--text-muted); margin-top:0.7rem;">
-                    Para acompanhar os próximos shows, é só seguir o Akashi nas redes e ficar de olho nos
-                    eventos divulgados pelas casas e pela gravadora.
-                </p>
-            </aside>
+      </div>
+      <div class="contact-box">
+        <div class="contact-card">
+          <h2 style="font-size:1.8rem;margin-bottom:10px;">Leve o Akashi para seu projeto</h2>
+          <p>Para shows, campanhas, collabs, ativações com marcas, eventos geek/urbano e publicidade, fale com a equipe comercial.</p>
+          <a class="email" href="mailto:contato@grav.com.br?subject=Proposta%20comercial%20-%20Akashi%20Cruz">contato@grav.com.br</a>
+          <div class="actions"><a class="btn main" href="mailto:contato@grav.com.br?subject=Booking%20Akashi%20Cruz">Enviar proposta</a><a class="btn" href="https://www.instagram.com/akashi_cruz/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
         </div>
+        <div class="mini-stats">
+          <div class="stat"><b>+200M</b><span>streams de áudio e vídeo citados no perfil do Spotify</span></div>
+          <div class="stat"><b>+235K</b><span>inscritos citados no canal/perfil público</span></div>
+          <div class="stat"><b>BR</b><span>rap, trap, pop, geek e cultura de internet</span></div>
+        </div>
+      </div>
     </section>
 
-    <!-- GALERIA -->
-    <section id="galeria">
-        <div class="section-header">
-            <div class="section-kicker">Visual</div>
-            <h2 class="section-title">Galeria de imagens</h2>
-            <p class="section-desc">
-                Algumas imagens públicas usadas em matérias e perfis que ajudam a mostrar a estética do
-                Akashi Cruz: das fotos promocionais a climas mais escuros e conceituais.
-            </p>
-        </div>
+    <footer>
+      <p>© <span id="year"></span> Akashi Cruz — página demonstrativa de link na bio. Música, marcas, imagens e plataformas pertencem aos respectivos proprietários.</p>
+      <p class="demo-note">Para publicar: troque apenas links/imagens que desejar, suba em Vercel, Netlify, GitHub Pages ou servidor estático e coloque o endereço na bio.</p>
+    </footer>
+  </main>
 
-        <div class="gallery-grid">
-            <figure class="gallery-item">
-                <img src="https://portalrnd.com.br/wp-content/uploads/2024/03/Akashi.png"
-                     alt="Foto promocional de Akashi Cruz com boné roxo e jaqueta preta" />
-                <figcaption class="gallery-caption">Foto promocional – era “Tokyo Town”</figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="https://portalrnd.com.br/wp-content/uploads/2023/09/Akashi1-768x1024.jpg"
-                     alt="Akashi Cruz com iluminação roxa, sentado com mãos próximas ao rosto" />
-                <figcaption class="gallery-caption">Estética roxa &amp; clima introspectivo</figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="https://res.cloudinary.com/shotgun/image/upload/c_limit%2Cw_3840/fl_lossy/f_auto/q_auto/production/artworks/artists/akashi_cruz.jpg"
-                     alt="Retrato de Akashi Cruz com camiseta escura e expressão séria" />
-                <figcaption class="gallery-caption">Retrato usado em página de artista</figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="https://i.scdn.co/image/ab67706f000000028df86b4e5b392df5bceb18f0"
-                     alt="Montagem gráfica estilo playlist com Akashi Cruz no centro" />
-                <figcaption class="gallery-caption">Arte de playlist – Akashi Cruz Radio</figcaption>
-            </figure>
-        </div>
-    </section>
-
-    <!-- REDES -->
-    <section id="redes">
-        <div class="section-header">
-            <div class="section-kicker">Links oficiais</div>
-            <h2 class="section-title">Siga o Akashi nas plataformas</h2>
-            <p class="section-desc">
-                Canais oficiais para ouvir, seguir e acompanhar de perto os próximos lançamentos do artista.
-            </p>
-        </div>
-
-        <div class="grid-2">
-            <article class="card card-alt">
-                <h3>Redes sociais</h3>
-                <ul style="list-style:none; font-size:0.92rem; color:var(--text-muted);">
-                    <li>
-                        <strong>Instagram:</strong>
-                        <a href="https://www.instagram.com/akashi_cruz/" target="_blank" rel="noopener noreferrer">
-                            @akashi_cruz
-                        </a>
-                    </li>
-                    <li>
-                        <strong>YouTube:</strong>
-                        <a href="https://www.youtube.com/@AkashiCruz" target="_blank" rel="noopener noreferrer">
-                            Canal Akashi Cruz
-                        </a>
-                    </li>
-                    <li>
-                        <strong>Spotify:</strong>
-                        <a href="https://open.spotify.com/artist/68wF4X9K8JFav3YlPFtsR2" target="_blank" rel="noopener noreferrer">
-                            Perfil de artista
-                        </a>
-                    </li>
-                    <li>
-                        <strong>X (Twitter):</strong>
-                        <a href="https://x.com/akashi_cruz" target="_blank" rel="noopener noreferrer">
-                            @akashi_cruz
-                        </a>
-                    </li>
-                </ul>
-                <p style="font-size:0.83rem; color:var(--text-muted); margin-top:0.7rem;">
-                    A melhor forma de apoiar é seguir, compartilhar as músicas e adicionar os sons às suas
-                    playlists. Isso ajuda muito no alcance de cada lançamento novo.
-                </p>
-            </article>
-
-            <aside class="card">
-                <h3>Como usar esta página</h3>
-                <p style="font-size:0.9rem; color:var(--text-muted);">
-                    Esta é uma página feita no estilo blog de fã, reunindo informações públicas encontradas
-                    em matérias, perfis oficiais e plataformas de streaming. Você pode:
-                </p>
-                <ul style="padding-left:1rem; font-size:0.9rem; color:var(--text-muted); margin-top:0.5rem;">
-                    <li>Hospedar em qualquer servidor estático (Netlify, Vercel, GitHub Pages etc.);</li>
-                    <li>Editar o texto para deixar ainda mais pessoal e adicionar resenhas suas;</li>
-                    <li>Incluir novos lançamentos do Akashi conforme forem saindo;</li>
-                    <li>Traduzir trechos se quiser alcançar fãs de outros países.</li>
-                </ul>
-            </aside>
-        </div>
-    </section>
-</main>
-
-<footer class="wrapper">
-    <p>
-        Página de fã não-oficial sobre Akashi Cruz. Todos os direitos das músicas, imagens e marcas pertencem
-        aos seus respectivos proprietários. Links e números podem mudar com o tempo, então sempre confira
-        diretamente nas plataformas oficiais.
-    </p>
-</footer>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
